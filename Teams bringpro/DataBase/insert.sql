@@ -19,7 +19,7 @@ INSERT INTO [dbo].[WebsiteTeams]
            ,[WebsiteId]
            ,[Description]
            ,[ParentTeamId]
-		   ,[AddressId])
+	   ,[AddressId])
      VALUES
            (@Name
            ,@WebsiteId

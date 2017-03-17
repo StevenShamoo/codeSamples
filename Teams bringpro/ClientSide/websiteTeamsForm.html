@@ -1,0 +1,91 @@
+﻿<div class="card cardBorder">
+
+    <form class="form-horizontal" name="webForm" ng-submit="webTeamsForm.teamFormSubmit(webForm.$valid)" novalidate>
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2>Add New Team</h2>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-danger waves-effect pull-right" ng-click="webTeamsForm.deleteSetting(webJobsForm.jobId)" ng-show="webTeamsForm.jobId">Delete Job</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body card-padding">
+            <div class="form-group" ng-class="{'has-error' : webForm.name.$invalid && !webForm.name.$pristine}">
+                <label for="name" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <div class="fg-line">
+                        <input type="text" class="form-control input-sm" name="name" ng-model="webTeamsForm.selectedTeam.name" placeholder="Enter Name" required>
+                        <small ng-show="webForm.name.$error.required && !webForm.name.$pristine" class="help-block">Name is Required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error' : webForm.description.$invalid && !webForm.description.$pristine}">
+                <label for="description" class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    <div class="fg-line">
+                        <input type="text" class="form-control input-sm" name="description" ng-model="webTeamsForm.selectedTeam.description" placeholder="Enter Description" required>
+                        <small ng-show="webForm.description.$error.required && !webForm.description.$pristine" class="help-block">Description is Required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error' : webForm.address.$invalid && !webForm.address.$pristine}">
+                <label for="address" class="col-sm-2 control-label">Address</label>
+                <div class="col-sm-10">
+                    <div class="fg-line">
+                        <input type="text" g-places-autocomplete class="form-control input-sm" name="address" ng-model="webTeamsForm.addressComponents" placeholder="Enter Address" required>
+                        <small ng-show="webForm.address.$error.required && !webForm.address.$pristine" class="help-block">Address is Required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error' : webForm.websiteSelect.$error.required && !webForm.websiteSelect.$pristine}">
+                <label for="websiteSelect" class="col-sm-2 control-label" options="">Website</label>
+                <div class="col-sm-10">
+                    <div class="fg-line">
+                        <select name="websiteSelect" id="websiteSelect" multiple chosen
+                                ng-model="webTeamsForm.website"
+                                ng-options="website.id as website.title for website in webTeamsForm.websites"
+                                style="width: 400px"
+                                required>
+                            <option value=""></option>
+                        </select>
+                        <p ng-show="webForm.websiteSelect.$error.required && !webForm.websiteSelect.$pristine" class="help-block">At least 1 Website Required.</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description" class="col-sm-2 control-label">Current Selected ZipCodes</label>
+                <div class="col-sm-10">
+                    <div class="fg-line" ng-repeat="zipCode in webTeamsForm.zipCodes">
+                        <p style="">
+                            {{zipCode.zipCode}}
+                            <button type="button" ng-click="webTeamsForm.deleteZip(zipCode.id)" class="btn btn-icon command-delete waves-effect waves-circle">
+                                <span class="zmdi zmdi-delete"></span>
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="zipCode" class="col-sm-2 control-label">ZipCode</label>
+                <div class="col-sm-10">
+                    <div class="fg-line">
+                        <input type="text" class="form-control input-sm" name="zipCode" ng-model="webTeamsForm.zipCodeInput" placeholder="Enter a new Zipcode to add to list above!">
+                        <button type="button" class="btn btn-success" ng-click="webTeamsForm.inputZipToArray(webTeamsForm.zipCodeInput)">Submit a new Zipcode</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a href="backoffice#/website/{{webTeamsForm.selectedSite.slug}}/teams/" class="btn btn-primary waves-effect">Back</a>
+                    <button type="submit" class="btn btn-success" ng-disabled="webForm.$invalid">Submit</button>
+                    <button type="button" class="btn btn-danger" ng-hide="webTeamsForm.createMode" ng-click="webTeamsForm.deleteTeam(webTeamsForm.selectedTeam.id)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
