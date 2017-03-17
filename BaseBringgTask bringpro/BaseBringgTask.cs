@@ -17,7 +17,6 @@ namespace Sabio.Web.Classes.Tasks.Bringg
         public abstract string GetRequestUrl(T request);
 
         protected abstract Dictionary<string, object> MakeRequest(T request);
-        //Process Request will look like the function above, it will have a 2nd input, which will be what the dictionary thing that Execute() is now returning
         protected abstract void ProcessResponse(T request, Dictionary<string, object> response);
 
 
