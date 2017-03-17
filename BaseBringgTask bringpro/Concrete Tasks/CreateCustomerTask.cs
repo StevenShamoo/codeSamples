@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace Sabio.Web.Classes.Tasks.Bringg
 {
     public class CreateCustomerTask<T> : BaseBringgTask<T>,IBringgTask<T>
-        where T : RegisterBringgRequest//, IBringgTask<T>
+        where T : RegisterBringgRequest
     {
         [Dependency]
         public IBringgUserService _BringgUserService { get; set; }
