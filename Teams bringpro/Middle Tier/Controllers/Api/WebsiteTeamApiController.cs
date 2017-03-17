@@ -28,8 +28,6 @@ namespace Sabio.Web.Controllers.Api
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
             }
-            //ItemResponse<bool> response = new ItemResponse<bool>();
-            //response.Item = _WebsiteTeamService.WebsiteTeamInsert(model);
 
             _WebsiteTeamService.WebsiteTeamInsert(model);
             return Request.CreateResponse(HttpStatusCode.OK, "Team Successfully Added");
@@ -65,8 +63,6 @@ namespace Sabio.Web.Controllers.Api
             }
 
             _WebsiteTeamService.WebsiteTeamUpdate(Id, model);
-            //ItemResponse<int> response = new ItemResponse<int>();
-            //response.Item = SettingsServices.Update(Id, model);
             return Request.CreateResponse(HttpStatusCode.OK, "Team Updated Successfully");
         }
 
@@ -92,25 +88,6 @@ namespace Sabio.Web.Controllers.Api
             return Request.CreateResponse(response);
 
         }
-
-        //Test Route
-        //[Route("test/{ZipCode}"), HttpGet]
-        //public HttpResponseMessage GetTeamIdByZipcode(string ZipCode)
-        //{
-        //    int TeamId = 0;
-
-        //    TeamId = _WebsiteTeamService.GetTeamIdByZipcode(ZipCode);
-
-        //    if (TeamId == 0)
-        //    {
-        //        TeamId = 12345;
-        //        return Request.CreateResponse(TeamId);
-
-        //    }
-
-        //    return Request.CreateResponse(TeamId);
-
-        //}
 
     }
 }
