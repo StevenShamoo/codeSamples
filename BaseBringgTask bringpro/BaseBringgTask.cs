@@ -13,8 +13,8 @@ namespace Sabio.Web.Classes.Tasks.Bringg
     public abstract class BaseBringgTask<T> where T : BaseBringgRequest 
     {
 
-        public abstract string GetRequestType();
-        public abstract string GetRequestUrl(T request);
+        protected abstract string GetRequestType();
+        protected abstract string GetRequestUrl(T request);
 
         protected abstract Dictionary<string, object> MakeRequest(T request);
         protected abstract void ProcessResponse(T request, Dictionary<string, object> response);
